@@ -18,6 +18,7 @@ export default function NoteApp() {
                 </div>
             </div>
             <div className='body'>
+                <div></div>
                 <Notes />
                 <AddNote />
             </div>
