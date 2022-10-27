@@ -1,0 +1,20 @@
+.nav-bar {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    background-color: #F25E5Eb3;
+    height: 60px;
+    box-shadow: 1px 1px 1px 1px #0000001a;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+}

@@ -1,0 +1,9 @@
+.profile-container {
+    display: flex;
+    align-items: center;
+}
+
+.profile-container img {
+    width: 25px;
+    height: auto;
+}
