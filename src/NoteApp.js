@@ -14,13 +14,13 @@ export default function NoteApp() {
                     <Search />
                 </div>
                 <div className='profile-icon'>
+                    <AddNote />
                     <Profile />
                 </div>
             </div>
             <div className='body'>
                 <div></div>
                 <Notes />
-                <AddNote />
             </div>
         </div>
     );

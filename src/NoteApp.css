@@ -14,7 +14,7 @@
 
 .profile-icon {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding-right: 10px;
 }
