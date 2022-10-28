@@ -1,11 +1,11 @@
 import React from 'react';
 import '../styles/add_note.css';
+import AddIcon from '../assets/add-icon.png'
 
 export default function AddNote() {
-    const imageAddress = 'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/add.png';
     return (
         <div className='add-icon-container'>
-            <img src={imageAddress} alt='Add Note'/>
+            <img src={AddIcon} alt='Add Note'/>
         </div>
     );
 }

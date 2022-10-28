@@ -1,7 +1,7 @@
 .nav-bar {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    background-color: #F25E5Eb3;
+    background-color: #ffffff;
     height: 7vmin;
     box-shadow: 1px 1px 1px 1px #0000001a;
 }
