@@ -4,10 +4,10 @@ import Profile from './components/Profile'
 import Notes from './components/Notes';
 import AddNote from './components/AddNote';
 import './styles/note_app.css';
-import userNotes from './UserNotes/UserNotes';
+import sampleNotes from './assets/SampleNotes';
 
 export default function NoteApp() {
-    const [notes, setNotes] = useState(userNotes);
+    const [notes, setNotes] = useState(sampleNotes);
     const [searchTerm, setSearchTerm] = useState('');
 
     const onAddNote = (newNote) => {

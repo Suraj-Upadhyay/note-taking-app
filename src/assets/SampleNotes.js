@@ -1,4 +1,4 @@
-const userNotes = [
+const sampleNotes = [
     {
         title: 'Title 1 Title 1 Title 1 Title 1',
         date: '12/12/12',
@@ -131,4 +131,4 @@ Cras mattis ipsum eu viverra convallis.Duis aliquet turpis quis maximus blandit.
     },
 ];
 
-export default userNotes;
+export default sampleNotes;
