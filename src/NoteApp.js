@@ -3,7 +3,7 @@ import Search from './components/Search';
 import Profile from './components/Profile'
 import Notes from './components/Notes';
 import AddNote from './components/AddNote';
-import './NoteApp.css';
+import './styles/note_app.css';
 
 export default function NoteApp() {
     return (
