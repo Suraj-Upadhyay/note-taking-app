@@ -1,15 +1,25 @@
 import React from 'react';
 import '../styles/note.css';
+import EditIcon from '../assets/edit-icon.png'
 
-export default function Note () {
+export default function Note(props) {
+    const title = props.note.title;
+    const text = props.note.text;
+    const date = props.note.date;
+
     return (
         <div className='note-container'>
-            <div className='title-container'>
-                <h2>Title</h2>
-                <h4>Date</h4>
+            <div className='note-header'>
+                <div className='title-container'>
+                    <div className='title'>{title}</div>
+                    <div className='date'>{date}</div>
+                </div>
+                <div className='edit-button'>
+                    <img src={EditIcon} alt='Edit Note Icon'/>
+                </div>
             </div>
             <div className='text-container'>
-                <p>Text</p>
+                <p>{text}</p>
             </div>
         </div>
     );
