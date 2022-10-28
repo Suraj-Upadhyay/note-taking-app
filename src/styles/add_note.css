@@ -6,6 +6,7 @@
 }
 
 .add-icon-container img {
-    width: 70px;
+    width: 60px;
     height: auto;
+    position: sticky;
 }

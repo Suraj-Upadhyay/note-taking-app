@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Note from './Note';
+import '../styles/notes.css';
 
 export default function Notes() {
     return (
         <div className='notes-container'>
-            <p>Notes</p>
+            <Note />
+            <Note />
+            <Note />
+            <Note />
         </div>
     );
 }

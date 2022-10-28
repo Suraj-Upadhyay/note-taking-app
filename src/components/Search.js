@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../styles/search.css';
 import searchIcon from '../assets/search-icon.png';
 
@@ -9,7 +9,7 @@ export default function Search() {
                 <input />
             </div>
             <div className='search-icon'>
-                <img src={searchIcon} />
+                <img src={searchIcon} alt='Search'/>
             </div>
         </div>
     );

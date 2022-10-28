@@ -1,0 +1,28 @@
+.note-container {
+    width: 28vmax;
+    height: 400px;
+    margin: 30px;
+    margin-top: 15px;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.title-container {
+    justify-self: center;
+    width: 50%;
+    height: 70%;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.text-container {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid black;
+    justify-self: center;
+}
