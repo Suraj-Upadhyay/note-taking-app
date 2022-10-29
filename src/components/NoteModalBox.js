@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import '../styles/note_modal_box.css'
+import '../styles/note_modal_box.css';
+import CloseIcon from '../assets/close-icon.png'
 
 export default function NoteModalBox(props) {
 
@@ -9,6 +10,7 @@ export default function NoteModalBox(props) {
         date: props.note ? props.note.date : new Date().toDateString(),
         text: props.note ? props.note.text : ''
     });
+    const [showCloseNotePopup, setShowCloseNotePopup] = useState(false);
 
     const onNoteChange = (e) => {
         e.preventDefault();
@@ -28,11 +30,15 @@ export default function NoteModalBox(props) {
         props.onClose();
     };
 
+    const onNoteClose = () => {
+        setShowCloseNotePopup(true);
+    };
+
     useEffect(() => {
         const onWindowClick = (e) => {
             const modal = document.getElementById('modal-container');
             if (e.target === modal) {
-                props.onClose();
+                setShowCloseNotePopup(true);
             };
         };
 
@@ -41,25 +47,46 @@ export default function NoteModalBox(props) {
         return () => {
             window.removeEventListener('click', onWindowClick);
         };
-    });
+    }, []);
+
+    useEffect(() => {
+        if (!showCloseNotePopup) return;
+
+        const onWindowClick = (e) => {
+            const closeDialog = document.getElementById('close-dialog-box');
+            if (e.target === closeDialog) {
+                setShowCloseNotePopup(false);
+            }
+        };
+
+        window.addEventListener('click', onWindowClick);
+
+        return () => {
+            window.removeEventListener('click', onWindowClick);
+        };
+    }, [showCloseNotePopup]);
 
     return (
         <div className='modal-container' id="modal-container">
             <div className='modal-box'>
                 <div className='modal-header'>
                     <input
-                        placeholder='Enter Title...'
+                        className='input-title input'
+                        placeholder='Enter Title.'
                         type='text'
                         name='title'
                         value={note.title}
                         onChange={onNoteChange}
                     />
-                    <div className='date'>{note.date}</div>
-                    <span className='modal-close'></span>
+                    <span className='modal-close' onClick={onNoteClose}>
+                        <img src={CloseIcon} alt='Close Note Dialog' />
+                    </span>
+                    <div className='modal-date'>{note.date}</div>
                 </div>
                 <div className='modal-content'>
-                    <input
-                        placeholder='Type Something...'
+                    <textarea
+                        className='input-text input'
+                        placeholder='Type Something.'
                         type='text'
                         name='text'
                         value={note.text}
@@ -67,10 +94,19 @@ export default function NoteModalBox(props) {
                     />
                 </div>
                 <div className='modal-footer'>
-                    <button onClick={onDiscard}>Discard</button>
-                    <button onClick={onSave}>Save</button>
+                    <button className='modal-save-btn' onClick={onSave}>Save</button>
                 </div>
             </div>
+            {
+                showCloseNotePopup ?
+                    <div className='close-dialog-box' id='close-dialog-box'>
+                        <div className='close-dialog-content'>
+                            <button className='close-dialog-discard-btn' onClick={onDiscard}>Discard</button>
+                            <button className='close-dialog-save-btn' onClick={onSave}>Save</button>
+                        </div>
+                    </div>
+                : []
+            }
         </div>
     );
 }
