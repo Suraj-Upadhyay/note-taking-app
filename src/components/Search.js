@@ -10,12 +10,17 @@ export default function Search(props) {
         props.onSearch(searchTerm);
     };
 
+    const focusOnSearchInput = (e) => {
+        e.preventDefault();
+        document.getElementById('search-input').focus();
+    };
+
     return (
         <div className='search-box'>
             <div className='input-container'>
-                <input type='text' value={props.searchTerm} onChange={onSearchChange}/>
+                <input id='search-input' type='text' value={props.searchTerm} onChange={onSearchChange}/>
             </div>
-            <div className='search-icon'>
+            <div className='search-icon' onClick={focusOnSearchInput}>
                 <img src={searchIcon} alt='Search'/>
             </div>
         </div>
