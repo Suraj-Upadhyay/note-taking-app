@@ -12,7 +12,7 @@ export default function Notes(props) {
                 )
                 .map(
                     (note, index) => 
-                        <Note note={note} key={index} onEdit={props.onEditNote}/>
+                        <Note note={note} key={index} onEdit={props.openNoteModal}/>
                 )
             }
         </div>
@@ -22,5 +22,5 @@ export default function Notes(props) {
 Notes.propTypes = {
     notes: PropTypes.array.isRequired,
     searchTerm: PropTypes.string.isRequired,
-    onEditNote: PropTypes.func.isRequired
+    openNoteModal: PropTypes.func.isRequired
 };
