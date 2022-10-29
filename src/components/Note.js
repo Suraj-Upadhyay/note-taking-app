@@ -14,7 +14,7 @@ export default function Note(props) {
                     <div className='title'>{title}</div>
                     <div className='date'>{date}</div>
                 </div>
-                <div className='edit-button'>
+                <div className='edit-button' onClick={() => props.onEdit(props.index)}>
                     <img src={EditIcon} alt='Edit Note Icon'/>
                 </div>
             </div>

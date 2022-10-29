@@ -7,27 +7,13 @@ import sampleNotes from './assets/SampleNotes';
 import NoteModalBox from './components/NoteModalBox';
 import './styles/note_app.css';
 
-const DontShowModal = -2;
 const AddNewNote = -1;
+const DontShowModal = -2;
 
 export default function NoteApp() {
     const [notes, setNotes] = useState(sampleNotes);
     const [searchTerm, setSearchTerm] = useState('');
     const [modalNoteIndex, setModalNoteIndex] = useState(DontShowModal);
-
-    // const onAddNote = (newNote) => {
-    //     setNotes((prevNotes) =>
-    //         [...prevNotes, newNote]
-    //     );
-    // };
-
-    const onEditNote = (index, editedNote) => {
-        const sameNodes = notes.filter((note, noteIndex) => noteIndex !== index);
-        setNotes((prevNotes) => [
-            ...sameNodes,
-            editedNote
-        ]);
-    };
 
     const onSearch = (searchFor) => {
         setSearchTerm(searchFor);
@@ -42,8 +28,17 @@ export default function NoteApp() {
     };
 
     const onNoteSave = (index, note) => {
-        // If index = -1; Add note to the notes list.
-        // if not, replace the note at the particular index.
+        if (index === AddNewNote)
+            setNotes(prevNotes => [
+                ...prevNotes,
+                note
+            ]);
+        else
+            setNotes(prevNotes => {
+                prevNotes[index] = note;
+                return prevNotes;
+            });
+        closeNoteModel();
     };
 
     return (
@@ -65,7 +60,8 @@ export default function NoteApp() {
             {
                 modalNoteIndex !== DontShowModal ?
                     <NoteModalBox
-                        note={ modalNoteIndex === AddNewNote ? {} : notes[modalNoteIndex] }
+                        note={ modalNoteIndex === AddNewNote ? null : notes[modalNoteIndex] }
+                        index={modalNoteIndex}
                         onSave={onNoteSave}
                         onClose={closeNoteModel}
                     />

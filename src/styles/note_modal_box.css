@@ -20,3 +20,8 @@
     width: 50%;
     height: 70%;
 }
+
+.modal-box {
+    display: grid;
+    grid-template-rows: 1fr 5fr 1fr;
+}
