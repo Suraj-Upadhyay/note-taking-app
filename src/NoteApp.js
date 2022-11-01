@@ -1,19 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Search from './components/Search';
 import Profile from './components/Profile'
 import Notes from './components/Notes';
 import AddNote from './components/AddNote';
-import sampleNotes from './assets/SampleNotes';
 import NoteModalBox from './components/NoteModalBox';
+import { fetchNotesList, insertNewNote, updateNote, removeNote } from './database/db-operations';
 import './styles/note_app.css';
 
 const AddNewNote = -1;
 const DontShowModal = -2;
 
 export default function NoteApp() {
-    const [notes, setNotes] = useState(sampleNotes);
+    const [notes, setNotes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [modalNoteIndex, setModalNoteIndex] = useState(DontShowModal);
+
+    const getNotes = async () => {
+        setNotes( await fetchNotesList());
+    };
+
+    const insertNote = async (newNote) => {
+        setNotes( await insertNewNote(newNote));
+    };
+
+    const editNote = async (index, editedNote) => {
+        const noteId = notes[index]._id;
+        setNotes( await updateNote(noteId, editedNote));
+    };
+
+    const deleteNote = async (index) => {
+        const noteId = notes[index]._id;
+        setNotes( await removeNote(noteId));
+    };
+
+    useEffect(() => {
+        getNotes();
+    }, [])
 
     const onSearch = (searchFor) => {
         setSearchTerm(searchFor);
@@ -29,15 +51,9 @@ export default function NoteApp() {
 
     const onNoteSave = (index, note) => {
         if (index === AddNewNote)
-            setNotes(prevNotes => [
-                ...prevNotes,
-                note
-            ]);
+            insertNote(note);
         else
-            setNotes(prevNotes => {
-                prevNotes[index] = note;
-                return prevNotes;
-            });
+            editNote(index, note);
         closeNoteModel();
     };
 
@@ -55,7 +71,11 @@ export default function NoteApp() {
             </div>
             <div className='body'>
                 <div></div>
-                <Notes notes={notes} searchTerm={searchTerm} openNoteModal={openNoteModal} />
+                {
+                    notes.length
+                    ? <Notes notes={notes} searchTerm={searchTerm} openNoteModal={openNoteModal} />
+                    : ''
+                }
             </div>
             {
                 modalNoteIndex !== DontShowModal ?
