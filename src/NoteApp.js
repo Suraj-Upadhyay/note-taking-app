@@ -73,7 +73,7 @@ export default function NoteApp() {
                 <div></div>
                 {
                     notes.length
-                    ? <Notes notes={notes} searchTerm={searchTerm} openNoteModal={openNoteModal} />
+                    ? <Notes notes={notes} searchTerm={searchTerm} openNoteModal={openNoteModal} onDelete={deleteNote}/>
                     : ''
                 }
             </div>
@@ -83,6 +83,7 @@ export default function NoteApp() {
                         note={ modalNoteIndex === AddNewNote ? null : notes[modalNoteIndex] }
                         index={modalNoteIndex}
                         onSave={onNoteSave}
+                        onDelete={deleteNote}
                         onClose={closeNoteModel}
                     />
                 : []

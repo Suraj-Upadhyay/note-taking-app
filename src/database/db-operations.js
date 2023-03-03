@@ -46,7 +46,7 @@ export const updateNote = async (noteId, updatedNote) => {
 
 export const removeNote = async (noteId) => {
     const requestOptions = {
-        method: 'DEL',
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     };
     return await fetch(API_URL + '/' + noteId, requestOptions)

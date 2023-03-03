@@ -12,7 +12,7 @@ export default function Notes(props) {
                 )
                 .map(
                     (note, index) => 
-                        <Note note={note} index={index} key={index} onEdit={props.openNoteModal}/>
+                        <Note note={note} index={index} key={index} onEdit={props.openNoteModal} onDelete={props.onDelete}/>
                 )
             }
         </div>
